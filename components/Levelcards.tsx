@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 interface levelTypes {
   name: string;
@@ -11,9 +12,11 @@ interface levelTypes {
 
 const Levelcards = ({ name, colors, route }: levelTypes) => {
   return (
-    <div>
-      <div></div>
-    </div>
+    <Link href={`${route}`} passHref>
+      <div className={`bg-gradient-to-tr from-${colors.from} to-${colors.to}`}>
+        <h1>{name}</h1>
+      </div>
+    </Link>
   );
 };
 

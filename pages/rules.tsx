@@ -8,9 +8,10 @@ const Rules: NextPage = () => {
         Rules
       </h1>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>There are 10 questions in every quiz.</li>
+        <li>Answer the questions one by one.</li>
+        <li>The points will be shown at the end of the quiz.</li>
+        <li>And Lastly,Have Fun!</li>
       </ul>
     </div>
   );
