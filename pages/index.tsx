@@ -11,7 +11,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex items-center justify-center flex-col min-h-screen bg-gradient-to-tr from-indigo-700 to-violet-500">
-        <h1 className="text-8xl p-16 text-white font-Quicksand">Anime Quiz</h1>
+        <h1 className="text-8xl px-16 pb-16 text-white font-Quicksand">
+          Anime Quiz
+        </h1>
         <div className="flex items-center justify-center flex-col">
           <button className="text-4xl font-medium py-3 font-Quicksand w-52 bg-white rounded-3xl my-3 shadow-lg">
             <Link href="/levels" passHref>
