@@ -11,25 +11,25 @@ const StartPage = () => {
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-3 w-full mx-auto mt-2">
         <Levelcards
           name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
+          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
           route="/levels/basic"
           level="1"
         />
         <Levelcards
           name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
+          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
           route="/levels/basic"
           level="2"
         />
         <Levelcards
           name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
+          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
           route="/levels/basic"
           level="3"
         />
         <Levelcards
           name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
+          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
           route="/levels/basic"
           level="4"
         />

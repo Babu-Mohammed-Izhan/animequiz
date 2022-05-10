@@ -6,8 +6,10 @@ interface gameType {
 
 const Levels = ({ name }: gameType) => {
   return (
-    <div>
-      <div>{name}</div>
+    <div className="bg-gradient-to-tr from-blue-600 to-teal-500 h-screen flex items-center justify-center">
+      <h3>level 2</h3>
+      <h1>{name}</h1>
+      <button>Game</button>
     </div>
   );
 };
