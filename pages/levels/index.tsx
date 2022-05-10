@@ -12,25 +12,25 @@ const StartPage = () => {
         <Levelcards
           name="Basic"
           colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
-          route="/game/basic"
+          route="/levels/basic"
           level="1"
         />
         <Levelcards
           name="Basic"
           colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
-          route="/game/basic"
+          route="/levels/basic"
           level="2"
         />
         <Levelcards
           name="Basic"
           colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
-          route="/game/basic"
+          route="/levels/basic"
           level="3"
         />
         <Levelcards
           name="Basic"
           colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
-          route="/game/basic"
+          route="/levels/basic"
           level="4"
         />
       </div>

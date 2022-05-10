@@ -17,6 +17,9 @@ const Levelcards = ({ name, colors, route, level }: levelTypes) => {
       <div
         className={`bg-gradient-to-tr ${colors.from} ${colors.to} rounded-3xl pl-5 pr-44 pt-12 pb-5 w-full mt-16`}
       >
+        <button className="border-2 border-white text-white rounded-xl p-3 mb-4">
+          Play
+        </button>
         <h4 className="text-gray-50 font-Quicksand text-lg">level {level}</h4>
         <h1 className="text-white font-Quicksand text-4xl">{name}</h1>
       </div>
