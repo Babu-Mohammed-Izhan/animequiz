@@ -8,29 +8,29 @@ const StartPage = () => {
       <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-indigo-700 to-violet-500">
         Let's Play
       </h1>
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-3 w-11/12 mx-auto">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-3 w-full mx-auto mt-2">
         <Levelcards
           name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
-          route="/game/basic"
+          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
+          route="/levels/basic"
           level="1"
         />
         <Levelcards
           name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
-          route="/game/basic"
+          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
+          route="/levels/basic"
           level="2"
         />
         <Levelcards
           name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
-          route="/game/basic"
+          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
+          route="/levels/basic"
           level="3"
         />
         <Levelcards
           name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-blue-400' }}
-          route="/game/basic"
+          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
+          route="/levels/basic"
           level="4"
         />
       </div>
