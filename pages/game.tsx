@@ -1,8 +1,9 @@
 import React, { EventHandler, useEffect, useState } from 'react';
 import axios from 'axios';
+import { Question } from '../types';
 
 const Game = () => {
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<String[]>([]);
   const [score, setScore] = useState(0);
   const [number, setNumber] = useState(0);
   const [visible, setVisible] = useState(false);
@@ -11,11 +12,8 @@ const Game = () => {
   const [redirectboard, setredirectboard] = useState(false);
   const [alert, setAlert] = useState('');
 
-  const randomizeans = (question, num) => {
-    const answers = [
-      ...question[num].incorrect_answers,
-      question[num].correct_answer,
-    ];
+  const randomizeans = (question: Question, num) => {
+    const answers = [question.op1, question.op2, question.op3, question.op4];
     answers.sort(() => 0.5 - Math.random());
     setOptions(answers);
   };
