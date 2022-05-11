@@ -7,20 +7,20 @@ const Game = () => {
   const [score, setScore] = useState(0);
   const [number, setNumber] = useState(0);
   const [visible, setVisible] = useState(false);
-  const [ques, setques] = useState([]);
+  const [ques, setques] = useState<Question[]>([]);
   const [questionnum, setQuestionnum] = useState(1);
   const [redirectboard, setredirectboard] = useState(false);
   const [alert, setAlert] = useState('');
 
-  const randomizeans = (question: Question, num) => {
+  const randomizeans = (question: Question) => {
     const answers = [question.op1, question.op2, question.op3, question.op4];
     answers.sort(() => 0.5 - Math.random());
     setOptions(answers);
   };
 
-  const handleAnswerOptionClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const chosenAns = e.target.value;
-    const correct = ques[number].correct_answer;
+  const handleAnswerOptionClick = (option: String) => {
+    const chosenAns = option;
+    const correct = ques[number].ans;
 
     //Incrementing the question number and going to the next question
     if (number <= 8) {
@@ -37,7 +37,7 @@ const Game = () => {
       setTimeout(() => {
         setNumber(number + 1);
         setQuestionnum(questionnum + 1);
-        randomizeans(ques, number + 1);
+        randomizeans(ques[number + 1]);
       }, 3000);
     } else {
       // handleScore(score);
