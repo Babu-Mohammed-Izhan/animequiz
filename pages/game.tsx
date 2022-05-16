@@ -18,9 +18,35 @@ const Game = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await axios.get('');
-      setQues(data.data.results);
-      randomizeans(data.data.results[0]);
+      // const data = await axios.get('');
+      // setQues(data.data.results);
+      // randomizeans(data.data.results[0]);
+      setQues([
+        {
+          q: 'question',
+          op1: 'op1',
+          op2: 'op2',
+          op3: 'op3',
+          op4: 'op4',
+          ans: 'ans',
+        },
+        {
+          q: 'question',
+          op1: 'op1',
+          op2: 'op2',
+          op3: 'op3',
+          op4: 'op4',
+          ans: 'ans',
+        },
+        {
+          q: 'question',
+          op1: 'op1',
+          op2: 'op2',
+          op3: 'op3',
+          op4: 'op4',
+          ans: 'ans',
+        },
+      ]);
       setVisible(true);
     };
     getData();
@@ -60,7 +86,7 @@ const Game = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gradient-to-tr from-blue-500 to-teal-400 h-screen">
       <nav>
         <button
           onClick={() => router.push('/')}
@@ -72,8 +98,8 @@ const Game = () => {
         <div>{health}</div>
       </nav>
       <h4>question {questionnum} of 10</h4>
-      <h1>{ques[number].q}</h1>
-      <div>
+      <h1>{ques[number]?.q}</h1>
+      <div className="">
         <button
           className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl"
           onClick={() => handleAnswerOptionClick(options[0])}
