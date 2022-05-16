@@ -21,7 +21,10 @@ const Levels = ({ name }: gameType) => {
           <h3 className="text-white text-3xl">level 2</h3>
           <h1 className="text-white text-6xl mb-40 capitalize">{name}</h1>
           <button className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl">
-            <span className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-teal-500 font-bold text-3xl">
+            <span
+              className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-teal-500 font-bold text-3xl"
+              onClick={() => router.push('/game')}
+            >
               Game
             </span>
           </button>
