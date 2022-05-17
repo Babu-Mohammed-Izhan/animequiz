@@ -2,11 +2,12 @@ import React, { EventHandler, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Question } from '../types';
+import RadialProgressbar from '../components/radialProgressbar';
 
 const Game = () => {
   const router = useRouter();
 
-  const [options, setOptions] = useState<String[]>([]);
+  const [options, setOptions] = useState<string[]>([]);
   const [score, setScore] = useState(0);
   const [number, setNumber] = useState(0);
   const [visible, setVisible] = useState(false);
@@ -47,6 +48,14 @@ const Game = () => {
           ans: 'ans',
         },
       ]);
+      randomizeans({
+        q: 'question',
+        op1: 'op1',
+        op2: 'op2',
+        op3: 'op3',
+        op4: 'op4',
+        ans: 'ans',
+      });
       setVisible(true);
     };
     getData();
@@ -54,11 +63,11 @@ const Game = () => {
 
   const randomizeans = (question: Question) => {
     const answers = [question.op1, question.op2, question.op3, question.op4];
-    answers.sort(() => 0.5 - Math.random());
+    answers.sort(() => 1.0 - Math.random());
     setOptions(answers);
   };
 
-  const handleAnswerOptionClick = (option: String) => {
+  const handleAnswerOptionClick = (option: string) => {
     const chosenAns = option;
     const correct = ques[number].ans;
 
@@ -86,52 +95,44 @@ const Game = () => {
   };
 
   return (
-    <div className="bg-gradient-to-tr from-blue-500 to-teal-400 h-screen">
-      <nav>
-        <button
-          onClick={() => router.push('/')}
-          className="rounded-full px-2 py-[2px] bg-white"
-        >
-          <i className="fa-solid fa-xmark h-3 w-3"></i>
-        </button>
-        <p>{questionnum}</p>
-        <div>{health}</div>
-      </nav>
-      <h4>question {questionnum} of 10</h4>
-      <h1>{ques[number]?.q}</h1>
-      <div className="">
-        <button
-          className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl"
-          onClick={() => handleAnswerOptionClick(options[0])}
-        >
-          <span className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-teal-500 font-bold text-3xl">
-            {options[0]}
-          </span>
-        </button>
-        <button
-          className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl"
-          onClick={() => handleAnswerOptionClick(options[1])}
-        >
-          <span className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-teal-500 font-bold text-3xl">
-            {options[1]}
-          </span>
-        </button>
-        <button
-          className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl"
-          onClick={() => handleAnswerOptionClick(options[2])}
-        >
-          <span className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-teal-500 font-bold text-3xl">
-            {options[2]}
-          </span>
-        </button>
-        <button
-          className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl"
-          onClick={() => handleAnswerOptionClick(options[3])}
-        >
-          <span className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-teal-500 font-bold text-3xl">
-            {options[3]}
-          </span>
-        </button>
+    <div className="bg-gradient-to-tr from-blue-600 to-blue-400 h-screen text-white">
+      <div className="w-10/12 mx-auto flex flex-col justify-between h-full py-10">
+        <nav className="flex justify-between items-center">
+          <button
+            onClick={() => router.push('/levels')}
+            className="rounded-full px-2 py-[6px] bg-transparent border-2"
+          >
+            <i className="fa-solid fa-xmark h-5 w-5"></i>
+          </button>
+          <RadialProgressbar
+            sqSize={50}
+            percentage={questionnum}
+            strokeWidth={5}
+          />
+          <p className="rounded-full px-2 py-[6px] bg-transparent border-2">
+            <i className="fa-solid fa-heart h-5 w-5"></i>
+            {health}
+          </p>
+        </nav>
+        <div>
+          <h4 className="text-xl">question {questionnum} of 10</h4>
+          <h1 className="text-5xl">{ques[number]?.q}</h1>
+        </div>
+        <div className="pb-5">
+          {options.map((o: string) => {
+            return (
+              <button
+                key={o}
+                className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl my-2"
+                onClick={() => handleAnswerOptionClick(o)}
+              >
+                <span className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-teal-500 font-bold text-2xl">
+                  {o}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
