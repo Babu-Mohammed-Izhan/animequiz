@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Question } from '../types';
 import RadialProgressbar from '../components/radialProgressbar';
+import OptionsButton from '../components/OptionsButton';
 
 const Game = () => {
   const router = useRouter();
@@ -29,7 +30,7 @@ const Game = () => {
           op2: 'op2',
           op3: 'op3',
           op4: 'op4',
-          ans: 'ans',
+          ans: 'op1',
         },
         {
           q: 'question',
@@ -37,7 +38,7 @@ const Game = () => {
           op2: 'op2',
           op3: 'op3',
           op4: 'op4',
-          ans: 'ans',
+          ans: 'op2',
         },
         {
           q: 'question',
@@ -45,7 +46,7 @@ const Game = () => {
           op2: 'op2',
           op3: 'op3',
           op4: 'op4',
-          ans: 'ans',
+          ans: 'op3',
         },
       ]);
       randomizeans({
@@ -54,7 +55,7 @@ const Game = () => {
         op2: 'op2',
         op3: 'op3',
         op4: 'op4',
-        ans: 'ans',
+        ans: 'op1',
       });
       setVisible(true);
     };
@@ -80,7 +81,7 @@ const Game = () => {
       }
 
       if (chosenAns !== correct) {
-        setAlert('danger');
+        setHealth((prev) => prev - 1);
       }
 
       setTimeout(() => {
@@ -121,15 +122,12 @@ const Game = () => {
         <div className="pb-5">
           {options.map((o: string) => {
             return (
-              <button
+              <OptionsButton
+                handleAnswerOptionClick={handleAnswerOptionClick}
+                option={o}
+                answer={ques[number]?.ans}
                 key={o}
-                className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl my-2"
-                onClick={() => handleAnswerOptionClick(o)}
-              >
-                <span className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-teal-500 font-bold text-2xl">
-                  {o}
-                </span>
-              </button>
+              />
             );
           })}
         </div>
