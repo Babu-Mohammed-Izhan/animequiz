@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Question } from '../types';
 import RadialProgressbar from '../components/radialProgressbar';
+import OptionsButton from '../components/OptionsButton';
+import questiondata from '../example-data';
 
 const Game = () => {
   const router = useRouter();
@@ -22,40 +24,8 @@ const Game = () => {
       // const data = await axios.get('');
       // setQues(data.data.results);
       // randomizeans(data.data.results[0]);
-      setQues([
-        {
-          q: 'question',
-          op1: 'op1',
-          op2: 'op2',
-          op3: 'op3',
-          op4: 'op4',
-          ans: 'ans',
-        },
-        {
-          q: 'question',
-          op1: 'op1',
-          op2: 'op2',
-          op3: 'op3',
-          op4: 'op4',
-          ans: 'ans',
-        },
-        {
-          q: 'question',
-          op1: 'op1',
-          op2: 'op2',
-          op3: 'op3',
-          op4: 'op4',
-          ans: 'ans',
-        },
-      ]);
-      randomizeans({
-        q: 'question',
-        op1: 'op1',
-        op2: 'op2',
-        op3: 'op3',
-        op4: 'op4',
-        ans: 'ans',
-      });
+      setQues(questiondata);
+      randomizeans(questiondata[0]);
       setVisible(true);
     };
     getData();
@@ -63,7 +33,7 @@ const Game = () => {
 
   const randomizeans = (question: Question) => {
     const answers = [question.op1, question.op2, question.op3, question.op4];
-    answers.sort(() => 1.0 - Math.random());
+    answers.sort(() => 0.5 - Math.random());
     setOptions(answers);
   };
 
@@ -72,7 +42,7 @@ const Game = () => {
     const correct = ques[number].ans;
 
     //Incrementing the question number and going to the next question
-    if (number <= 8) {
+    if (questionnum < 10) {
       //Setting the score
       if (chosenAns === correct) {
         setScore(score + 1);
@@ -80,7 +50,7 @@ const Game = () => {
       }
 
       if (chosenAns !== correct) {
-        setAlert('danger');
+        setHealth((prev) => prev - 1);
       }
 
       setTimeout(() => {
@@ -89,8 +59,8 @@ const Game = () => {
         randomizeans(ques[number + 1]);
       }, 3000);
     } else {
+      router.push('/end');
       // handleScore(score);
-      setredirectboard(true);
     }
   };
 
@@ -121,15 +91,12 @@ const Game = () => {
         <div className="pb-5">
           {options.map((o: string) => {
             return (
-              <button
+              <OptionsButton
+                handleAnswerOptionClick={handleAnswerOptionClick}
+                option={o}
+                answer={ques[number]?.ans}
                 key={o}
-                className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl my-2"
-                onClick={() => handleAnswerOptionClick(o)}
-              >
-                <span className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-teal-500 font-bold text-2xl">
-                  {o}
-                </span>
-              </button>
+              />
             );
           })}
         </div>

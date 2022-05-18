@@ -18,7 +18,7 @@ const RadialProgressbar = ({
   // Arc length at 100% coverage is the circle circumference
   const dashArray = radius * Math.PI * 2;
   // Scale 100% coverage overlay with the actual percent
-  const dashOffset = dashArray - (dashArray * percentage * 20) / 100;
+  const dashOffset = dashArray - (dashArray * percentage * 10) / 100;
 
   return (
     <svg
