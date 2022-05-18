@@ -12,12 +12,10 @@ const Game = () => {
   const [options, setOptions] = useState<string[]>([]);
   const [score, setScore] = useState(0);
   const [number, setNumber] = useState(0);
-  const [visible, setVisible] = useState(false);
   const [ques, setQues] = useState<Question[]>([]);
   const [questionnum, setQuestionnum] = useState(1);
-  const [redirectboard, setredirectboard] = useState(false);
-  const [alert, setAlert] = useState('');
   const [health, setHealth] = useState(3);
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -26,7 +24,6 @@ const Game = () => {
       // randomizeans(data.data.results[0]);
       setQues(questiondata);
       randomizeans(questiondata[0]);
-      setVisible(true);
     };
     getData();
   }, []);
@@ -42,25 +39,27 @@ const Game = () => {
     const correct = ques[number].ans;
 
     //Incrementing the question number and going to the next question
-    if (questionnum < 10) {
+    if (questionnum < 10 || health == 0) {
       //Setting the score
       if (chosenAns === correct) {
         setScore(score + 1);
-        setAlert('success');
       }
 
       if (chosenAns !== correct) {
+        if (health == 1) {
+          router.push({ pathname: '/end', query: { score: score } }, '/end');
+        }
         setHealth((prev) => prev - 1);
       }
-
+      setDisabled(true);
       setTimeout(() => {
+        setDisabled(false);
         setNumber(number + 1);
         setQuestionnum(questionnum + 1);
         randomizeans(ques[number + 1]);
       }, 3000);
     } else {
-      router.push('/end');
-      // handleScore(score);
+      router.push({ pathname: '/end', query: { score: score } }, '/end');
     }
   };
 
