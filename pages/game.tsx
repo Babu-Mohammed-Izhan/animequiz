@@ -65,7 +65,7 @@ const Game = () => {
 
   return (
     <div className="bg-gradient-to-tr from-blue-600 to-blue-400 h-screen text-white">
-      <div className="w-10/12 mx-auto flex flex-col justify-between h-full py-10">
+      <div className="md:w-1/2 w-10/12 mx-auto flex flex-col justify-between h-full py-10">
         <nav className="flex justify-between items-center">
           <button
             onClick={() => router.push('/levels')}
@@ -80,7 +80,7 @@ const Game = () => {
           />
           <p className="rounded-full px-2 py-[6px] bg-transparent border-2">
             <i className="fa-solid fa-heart h-5 w-5"></i>
-            {health}
+            <span className="font-bold">{health}</span>
           </p>
         </nav>
         <div>

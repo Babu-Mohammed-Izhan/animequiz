@@ -15,7 +15,7 @@ module.exports = {
         },
       },
       animation: {
-        press: 'press 0.2s 1 linear',
+        press: 'press 0.4s 1 linear',
       },
     },
   },

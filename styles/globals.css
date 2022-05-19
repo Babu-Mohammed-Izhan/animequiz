@@ -3,3 +3,23 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@layer components {
+  .gradient-text {
+    background: linear-gradient(-55deg, #db2777, #bb2367, #821be2, #9333ea);
+    background-size: 300%;
+    animation: animated_text 10s ease-in-out infinite;
+  }
+
+  @keyframes animated_text {
+    0% {
+      background-position: 0px 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0px 50%;
+    }
+  }
+}
