@@ -15,14 +15,14 @@ const Home: NextPage = () => {
           Anime Quiz
         </h1>
         <div className="flex items-center justify-center flex-col">
-          <button className="text-4xl font-medium py-3 font-Quicksand w-52 bg-white rounded-3xl my-3 shadow-lg">
+          <button className="text-4xl font-medium py-3 font-Quicksand w-52 bg-white rounded-3xl my-3 shadow-lg active:animate-press">
             <Link href="/levels" passHref>
               <span className="text-transparent bg-clip-text bg-gradient-to-tr from-indigo-700 to-violet-500">
                 Start
               </span>
             </Link>
           </button>
-          <button className="text-4xl font-medium py-3 font-Quicksand w-52 bg-white rounded-3xl my-3 shadow-lg">
+          <button className="text-4xl font-medium py-3 font-Quicksand w-52 bg-white rounded-3xl my-3 shadow-lg active:animate-press">
             <Link href="/rules" passHref>
               <span className="text-transparent bg-clip-text bg-gradient-to-tr from-indigo-700 to-violet-500">
                 Rules

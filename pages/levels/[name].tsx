@@ -10,12 +10,12 @@ const Levels = ({ name }: gameType) => {
 
   return (
     <div className="bg-gradient-to-tr from-blue-600 to-teal-500 h-screen font-Quicksand">
-      <div className="flex flex-col items-start justify-between h-full w-10/12 mx-auto pt-20 pb-48">
+      <div className="flex flex-col items-start justify-between h-full md:w-1/2 w-10/12 mx-auto pt-20 pb-48">
         <button
           onClick={() => router.back()}
-          className="rounded-full px-[10px] py-[6px] bg-transparent border-2 border-white"
+          className="rounded-full px-2 py-[6px] bg-transparent border-2 text-white"
         >
-          <i className="fa-solid fa-xmark h-4 w-4 text-white"></i>
+          <i className="fa-solid fa-xmark h-5 w-5"></i>
         </button>
         <div className="w-full">
           <h3 className="text-white text-3xl">level 2</h3>
@@ -23,7 +23,9 @@ const Levels = ({ name }: gameType) => {
           <button className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl active:animate-press">
             <span
               className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-teal-500 font-bold text-3xl"
-              onClick={() => router.push('/game')}
+              onClick={() =>
+                router.push({ pathname: '/game', query: { game: name } })
+              }
             >
               Game
             </span>
