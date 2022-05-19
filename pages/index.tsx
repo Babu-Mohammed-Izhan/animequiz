@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex items-center justify-center flex-col min-h-screen bg-gradient-to-tr from-indigo-600 to-violet-500">
+      <main className="flex items-center justify-center flex-col min-h-screen gradient-text">
         <h1 className="lg:text-8xl text-6xl md:px-16 pb-16 text-white font-Quicksand">
           Anime Quiz
         </h1>
