@@ -2,6 +2,8 @@
 import React from 'react';
 import Levelcards from '../../components/Levelcards';
 import { useRouter } from 'next/router';
+import data from '../../example-data';
+import { Levels } from '../../types';
 
 const StartPage = () => {
   const router = useRouter();
@@ -20,12 +22,18 @@ const StartPage = () => {
         </button>
       </div>
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-3 w-full mx-auto mt-2">
-        <Levelcards
-          name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
-          route="/levels/basic"
-          level="1"
-        />
+        {data.levelData.map((data: Levels) => {
+          return (
+            <Levelcards
+              name={data.name}
+              colors={data.colors}
+              route={data.route}
+              level={data.level}
+              key={data.name}
+            />
+          );
+        })}
+
         <Levelcards
           name="Basic"
           colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
