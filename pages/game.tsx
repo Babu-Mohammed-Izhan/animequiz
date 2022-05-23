@@ -2,9 +2,9 @@ import React, { EventHandler, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Question } from '../types';
-import RadialProgressbar from '../components/radialProgressbar';
+import RadialProgressbar from '../components/RadialProgressbar';
 import OptionsButton from '../components/OptionsButton';
-import questiondata from '../example-data';
+import data from '../example-data';
 
 const Game = () => {
   const router = useRouter();
@@ -22,8 +22,8 @@ const Game = () => {
       // const data = await axios.get('');
       // setQues(data.data.results);
       // randomizeans(data.data.results[0]);
-      setQues(questiondata);
-      randomizeans(questiondata[0]);
+      setQues(data.questiondata);
+      randomizeans(data.questiondata[0]);
     };
     getData();
   }, []);

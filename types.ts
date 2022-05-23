@@ -6,3 +6,10 @@ export interface Question {
   op4: string;
   ans: string;
 }
+
+export interface Levels {
+  name: string;
+  colors: { from: string; to: string };
+  route: string;
+  level: string;
+}

@@ -1,3 +1,5 @@
+import { Levels } from './types';
+
 const questiondata = [
   {
     q: 'question',
@@ -81,4 +83,51 @@ const questiondata = [
   },
 ];
 
-export default questiondata;
+const levelData: Levels[] = [
+  {
+    name: 'Basic',
+    colors: { from: 'from-blue-500', to: 'to-teal-400' },
+    route: '/levels/basic',
+    level: '1',
+  },
+  {
+    name: 'Basic',
+    colors: { from: 'from-blue-500', to: 'to-teal-400' },
+    route: '/levels/basic',
+    level: '2',
+  },
+  {
+    name: 'Basic',
+    colors: { from: 'from-blue-500', to: 'to-teal-400' },
+    route: '/levels/basic',
+    level: '3',
+  },
+  {
+    name: 'Basic',
+    colors: { from: 'from-blue-500', to: 'to-teal-400' },
+    route: '/levels/basic',
+    level: '4',
+  },
+  {
+    name: 'Basic',
+    colors: { from: 'from-blue-500', to: 'to-teal-400' },
+    route: '/levels/basic',
+    level: '5',
+  },
+  {
+    name: 'Basic',
+    colors: { from: 'from-blue-500', to: 'to-teal-400' },
+    route: '/levels/basic',
+    level: '6',
+  },
+  {
+    name: 'Basic',
+    colors: { from: 'from-blue-500', to: 'to-teal-400' },
+    route: '/levels/basic',
+    level: '7',
+  },
+];
+
+const data = { questiondata, levelData };
+
+export default data;
