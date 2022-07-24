@@ -24,7 +24,7 @@ const StartPage = ({ leveldata }: LevelsType) => {
           <i className="fa-solid fa-xmark h-5 w-5 text-purple-500"></i>
         </button>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 w-full mx-auto mt-2">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 w-full mx-auto mt-10">
         {leveldata &&
           leveldata.map((data: Levels) => {
             return (

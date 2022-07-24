@@ -3,9 +3,10 @@ import { useRouter } from 'next/router';
 
 interface gameType {
   name: string;
+  level: string;
 }
 
-const Levels = ({ name }: gameType) => {
+const Levels = ({ name, level }: gameType) => {
   const router = useRouter();
 
   return (
@@ -18,7 +19,7 @@ const Levels = ({ name }: gameType) => {
           <i className="fa-solid fa-xmark h-5 w-5"></i>
         </button>
         <div className="w-full">
-          <h3 className="text-white text-3xl">level 2</h3>
+          <h3 className="text-white text-3xl">level {level}</h3>
           <h1 className="text-white text-6xl mb-40 capitalize">{name}</h1>
           <button className="bg-white rounded-3xl w-full mx-auto py-5 shadow-xl active:animate-press">
             <span
@@ -37,10 +38,11 @@ const Levels = ({ name }: gameType) => {
 };
 
 export async function getServerSideProps(context: any) {
-  console.log(context.query.name);
+  console.log(context.query);
   return {
     props: {
       name: context.query.name,
+      level: context.query.level,
     }, // will be passed to the page component as props
   };
 }
