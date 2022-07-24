@@ -89,6 +89,8 @@ const levelData: Levels[] = [
     colors: { from: 'from-blue-500', to: 'to-teal-400' },
     route: '/levels/basic',
     level: '1',
+    imglink:
+      'https://toppng.com/uploads/preview/sasuke-transparent-sasuke-uchiha-shippude-11563073314alrngrixlp.png',
   },
   {
     name: 'Basic',

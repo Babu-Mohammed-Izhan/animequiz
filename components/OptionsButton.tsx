@@ -28,7 +28,7 @@ const OptionsButton = ({
   return (
     <button
       key={option}
-      className={`${color} rounded-3xl w-full mx-auto py-5 shadow-xl my-2 active:animate-press`}
+      className={`${color} rounded-2xl w-full mx-auto py-3 shadow-xl my-2 active:animate-press`}
       onClick={() => {
         handleColor(option);
         handleAnswerOptionClick(option);

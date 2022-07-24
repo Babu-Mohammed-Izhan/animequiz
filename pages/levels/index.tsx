@@ -5,9 +5,12 @@ import { useRouter } from 'next/router';
 import data from '../../example-data';
 import { Levels } from '../../types';
 
-const StartPage = () => {
-  const router = useRouter();
+interface LevelsType {
+  leveldata: Levels[];
+}
 
+const StartPage = ({ leveldata }: LevelsType) => {
+  const router = useRouter();
   return (
     <div className="flex items-start justify-start flex-col min-h-screen w-11/12 mx-auto py-20">
       <div className="flex items-center justify-between w-full">
@@ -16,45 +19,37 @@ const StartPage = () => {
         </h1>
         <button
           onClick={() => router.push('/')}
-          className="rounded-full px-2 py-[6px] md:py-[2px] md:text-2xl bg-transparent border-2 border-purple-500"
+          className="rounded-full px-2 py-[6px] mt-3 md:py-[2px] md:text-2xl bg-transparent border-2 border-purple-500"
         >
           <i className="fa-solid fa-xmark h-5 w-5 text-purple-500"></i>
         </button>
       </div>
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-3 w-full mx-auto mt-2">
-        {data.levelData.map((data: Levels) => {
-          return (
-            <Levelcards
-              name={data.name}
-              colors={data.colors}
-              route={data.route}
-              level={data.level}
-              key={data.name}
-            />
-          );
-        })}
-
-        <Levelcards
-          name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
-          route="/levels/basic"
-          level="2"
-        />
-        <Levelcards
-          name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
-          route="/levels/basic"
-          level="3"
-        />
-        <Levelcards
-          name="Basic"
-          colors={{ from: 'from-blue-500', to: 'to-teal-400' }}
-          route="/levels/basic"
-          level="4"
-        />
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 w-full mx-auto mt-2">
+        {leveldata &&
+          leveldata.map((data: Levels) => {
+            return (
+              <Levelcards
+                name={data.name}
+                colors={data.colors}
+                route={data.route}
+                level={data.level}
+                key={data.name}
+                imagelink={data.imglink}
+              />
+            );
+          })}
       </div>
     </div>
   );
 };
+
+export async function getServerSideProps(_context: any) {
+  // const data = await axios.get('');
+  return {
+    props: {
+      leveldata: data.levelData,
+    }, // will be passed to the page component as props
+  };
+}
 
 export default StartPage;
