@@ -1,12 +1,17 @@
-import React, { EventHandler, useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Question } from '../types';
 import RadialProgressbar from '../components/RadialProgressbar';
 import OptionsButton from '../components/OptionsButton';
 import data from '../example-data';
 
-const Game = () => {
+interface GameType {
+  questiondata: Question[];
+  firstquestion: Question;
+}
+
+const Game = ({ questiondata, firstquestion }: GameType) => {
   const router = useRouter();
 
   const [options, setOptions] = useState<string[]>([]);
@@ -19,11 +24,8 @@ const Game = () => {
 
   useEffect(() => {
     const getData = async () => {
-      // const data = await axios.get('');
-      // setQues(data.data.results);
-      // randomizeans(data.data.results[0]);
-      setQues(data.questiondata);
-      randomizeans(data.questiondata[0]);
+      setQues(questiondata);
+      randomizeans(firstquestion);
     };
     getData();
   }, []);
@@ -83,11 +85,11 @@ const Game = () => {
             <span className="font-bold">{health}</span>
           </p>
         </nav>
-        <div>
-          <h4 className="text-xl">question {questionnum} of 10</h4>
+        <div className="mb-10">
+          <h4 className="text-xl pb-7">question {questionnum} of 10</h4>
           <h1 className="text-5xl">{ques[number]?.q}</h1>
         </div>
-        <div className="pb-5">
+        <div>
           {options.map((o: string) => {
             return (
               <OptionsButton
@@ -103,5 +105,16 @@ const Game = () => {
     </div>
   );
 };
+
+export async function getServerSideProps(_context: any) {
+  // const data = await axios.get('');
+
+  return {
+    props: {
+      questiondata: data.questiondata,
+      firstquestion: data.questiondata[0],
+    }, // will be passed to the page component as props
+  };
+}
 
 export default Game;
