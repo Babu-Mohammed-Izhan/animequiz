@@ -28,7 +28,7 @@ const Game = ({ questiondata, firstquestion }: GameType) => {
       randomizeans(firstquestion);
     };
     getData();
-  }, []);
+  }, [firstquestion, questiondata]);
 
   const randomizeans = (question: Question) => {
     const answers = [question.op1, question.op2, question.op3, question.op4];
