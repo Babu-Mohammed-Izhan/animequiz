@@ -19,7 +19,7 @@ const StartPage = ({ leveldata }: LevelsType) => {
         </h1>
         <button
           onClick={() => router.push('/')}
-          className="rounded-full px-2 py-[6px] md:py-[2px] md:text-2xl bg-transparent border-2 border-purple-500"
+          className="rounded-full px-2 py-[6px] mt-3 md:py-[2px] md:text-2xl bg-transparent border-2 border-purple-500"
         >
           <i className="fa-solid fa-xmark h-5 w-5 text-purple-500"></i>
         </button>
@@ -34,6 +34,7 @@ const StartPage = ({ leveldata }: LevelsType) => {
                 route={data.route}
                 level={data.level}
                 key={data.name}
+                imagelink={data.imglink}
               />
             );
           })}

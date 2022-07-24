@@ -12,4 +12,5 @@ export interface Levels {
   colors: { from: string; to: string };
   route: string;
   level: string;
+  imglink?: string;
 }
